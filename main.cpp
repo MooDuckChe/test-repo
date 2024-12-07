@@ -33,6 +33,29 @@ bool test3()
   return candle.body_contains(0);
 }
 
+// Test contains inside green candle
+bool test4()
+{
+  Candle candle{0.0, 100, -100, 4.0};
+
+  return candle.contains(0.1);
+}
+
+// Test contains outside green candle
+bool test5()
+{
+  Candle candle{0.0, 100, -100, 4.0};
+
+  return candle.contains(-100.1) == false;
+}
+
+// Test contains in green shadow
+bool test6()
+{
+  Candle candle{0.0, 100, -100, 4.0};
+
+  return candle.contains(100);
+}
 
 
 void initTests()
@@ -40,6 +63,9 @@ void initTests()
   tests.push_back(test1);
   tests.push_back(test2);
   tests.push_back(test3);
+  tests.push_back(test4);
+  tests.push_back(test5);
+  tests.push_back(test6);
 }
 
 int launchTests()
