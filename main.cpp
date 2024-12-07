@@ -3,41 +3,43 @@
 #include <iostream>
 
 //#include "tests.h" Autotests?
+// The Test that makes code the unusual behavior?
 #include "candle.h"
 
 //массив всех тестов, который мы заполняем в функции initTests
 static std::vector<std::function<bool()>> tests;
 
-//тест 1
+//Test body_contains inside green candle
 bool test1()
 {
-  //пример какого-то теста
-  return 42 == (41 + 1); //passed
+  Candle candle_green{0, 20, -5, 12};
+
+  return candle_green.body_contains(10);
 }
 
-//тест 2
+//Test body_contains inside red candle
 bool test2()
 {
-  //пример какого-то теста
-  return 42 != (41 + 1); //failed
+  Candle candle_red{10, 40, -3, -2};
+
+  return candle_red.contains(2);
 }
 
-//тест 3
+//Test body_contains inside candle with zero
 bool test3()
 {
-  Candle candle{ 0.0, 3.0, 3.0, 3.0 };
+  Candle candle{0.0, 0.0, 0.0, 0.0};
 
-  //пример какого-то теста
-  return candle.high == 3.0;
+  return candle.body_contains(0);
 }
+
+
 
 void initTests()
 {
   tests.push_back(test1);
   tests.push_back(test2);
   tests.push_back(test3);
-  //tests.push_back(test4);
-  //tests.push_back(test5);
 }
 
 int launchTests()
