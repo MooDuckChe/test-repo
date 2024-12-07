@@ -129,6 +129,30 @@ bool test15()
   return candle_green.is_green() == false;
 }
 
+// Test is_red with zero candle 
+bool test16()
+{
+  Candle candle_green{0.0, 0.0, 0.0, 0.0};
+
+  return candle_green.is_red() == false;
+}
+
+// Test is_red with red candle
+bool test17()
+{
+  Candle candle_red{0.0, 0.0, 0.0, 1.0};
+
+  return candle_red.is_red() == false;
+}
+
+// Test is_red with green candle
+bool test18()
+{
+  Candle candle_green{-1.0, 0.0, 0.0, -10.0};
+
+  return candle_green.is_red() == true;
+}
+
 void initTests()
 {
   tests.push_back(test1);
@@ -146,7 +170,9 @@ void initTests()
   tests.push_back(test13);
   tests.push_back(test14);
   tests.push_back(test15);
-  
+  tests.push_back(test16);
+  tests.push_back(test17);
+  tests.push_back(test18);
 }
 
 int launchTests()
