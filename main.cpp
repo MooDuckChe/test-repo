@@ -57,6 +57,29 @@ bool test6()
   return candle.contains(100);
 }
 
+// Test full_size 
+bool test7()
+{
+  Candle candle{0.0, 100, -100, 4.0};
+
+  return candle.full_size() == 200;
+}
+
+// Test full_size with zero
+bool test8()
+{
+  Candle candle{0.0, 0, 0, 0.0};
+
+  return candle.full_size() == 0.0;
+}
+
+// Test full_size with large positive nums
+bool test9()
+{
+  Candle candle{0.0, 1.0, 1e99, 0.0};
+  
+  return candle.full_size() == 1e+99;
+}
 
 void initTests()
 {
@@ -66,6 +89,9 @@ void initTests()
   tests.push_back(test4);
   tests.push_back(test5);
   tests.push_back(test6);
+  tests.push_back(test7);
+  tests.push_back(test8);
+  tests.push_back(test9);
 }
 
 int launchTests()
